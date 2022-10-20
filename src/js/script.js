@@ -96,7 +96,11 @@
 
     initAmountWidget(){
       const thisProduct = this;
+
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('update', function(){
+        thisProduct.processOrder();
+      });
     }
 
     initAccordion(){
@@ -177,6 +181,10 @@
       }
 
       // update calculated price in the HTML
+
+      price *= thisProduct.amountWidget.value;
+
+
       thisProduct.priceElem.innerHTML = price;
     }
 
@@ -185,11 +193,10 @@
   class AmountWidget {
     constructor(element){
       const thisWidget = this;
+
       thisWidget.getElements(element);
       thisWidget.initActions();
       thisWidget.setValue(thisWidget.input.value);
-      console.log('AmountWidget' , thisWidget);
-      console.log('constructor arguments:' , element);
     }
     getElements(element){
       const thisWidget = this;
@@ -203,7 +210,7 @@
       const thisWidget = this;
 
       const newValue = parseInt(value);
-
+      thisWidget.value = settings.amountWidget.defaultValue;
       /* TODO: Add validation */
 
       if (thisWidget.value !== newValue && !isNaN(newValue)) {
@@ -212,6 +219,7 @@
         }
       }
       thisWidget.input.value = thisWidget.value;
+      thisWidget.announce();
     }
 
     initActions() {
@@ -227,6 +235,11 @@
         event.preventDefault();
         thisWidget.setValue(thisWidget.value + 1 );
       });
+    }
+    announce (){
+      const thisWidget = this;
+      const event = new Event ('updated');
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
@@ -253,11 +266,6 @@
 
     init: function(){
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
       thisApp.initData();
       thisApp.initMenu();
     },
