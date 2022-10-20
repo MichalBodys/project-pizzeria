@@ -61,7 +61,6 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderFrom();
-      thisProduct.processOrder();
       thisProduct.initOrderFrom();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
@@ -183,9 +182,8 @@
       // update calculated price in the HTML
 
       price *= thisProduct.amountWidget.value;
-
-
       thisProduct.priceElem.innerHTML = price;
+
     }
 
   }
