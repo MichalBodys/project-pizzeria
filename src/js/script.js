@@ -216,8 +216,8 @@
           thisWidget.value = newValue;
         }
       }
-      thisWidget.input.value = thisWidget.value;
       thisWidget.announce();
+      thisWidget.input.value = thisWidget.value;
     }
 
     initActions() {
@@ -236,7 +236,7 @@
     }
     announce (){
       const thisWidget = this;
-      const event = new Event ('updated');
+      const event = new Event ('update');
       thisWidget.element.dispatchEvent(event);
     }
   }
