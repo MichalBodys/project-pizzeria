@@ -15,7 +15,7 @@ class CartProduct {
 
     thisCartProduct.getElements(element);
     thisCartProduct.initAmountWidget();
-    thisCartProduct.initActions();
+    thisCartProduct.initActions(); 
   }
 
   getElements(element){
