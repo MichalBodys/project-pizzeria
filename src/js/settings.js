@@ -3,18 +3,23 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
+    homePage: '#template-home',
   },
+
   containerOf: {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    home: '.home-wrapper',
   },
+
   all: {
     menuProducts: '#product-list > .product',
     menuProductsActive: '#product-list > .product.active',
     formInputs: 'input, select',
   },
+
   menuProduct: {
     clickable: '.product__header',
     form: '.product__order',
@@ -23,30 +28,29 @@ export const select = {
     amountWidget: '.widget-amount',
     cartButton: '[href="#add-to-cart"]',
   },
+
   widgets: {
     amount: {
       input: 'input.amount',
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
     },
+
     datePicker: {
       wrapper: '.date-picker',
       input: `input[name="date"]`,
     },
+
     hourPicker: {
       wrapper: '.hour-picker',
       input: 'input[type="range"]',
       output: '.output',
     },
+    flickity: {
+      carousel: '.main-carousel',
+    }
   },
-  booking: {
-    peopleAmount: '.people-amount',
-    hoursAmount: '.hours-amount',
-    tables: '.floor-plan .table',
-  },
-  nav: {
-    links: '.main-nav a',
-  },
+
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',
@@ -59,11 +63,32 @@ export const select = {
     phone: '[name="phone"]',
     address: '[name="address"]',
   },
+
   cartProduct: {
     amountWidget: '.widget-amount',
     price: '.cart__product-price',
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
+  },
+
+  booking: {
+    peopleAmount: '.people-amount',
+    hoursAmount: '.hours-amount',
+    tables: '.floor-plan .table',
+    tablesAll: '.floor-plan',
+    selectedTable: '.selected',
+    phone: '.order-confirmation [name="phone"]',
+    address: '.order-confirmation [name="address"]',
+    starters: '[name="starter"]',
+    submit: '.booking-form',
+  },
+
+  nav: {
+    links: '.main-nav a',
+  },
+
+  home: {
+    homeLinks: '.home-btn',
   },
 };
 
@@ -72,16 +97,21 @@ export const classNames = {
     wrapperActive: 'active',
     imageVisible: 'active',
   },
+
   cart: {
     wrapperActive: 'active',
   },
+
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
+    tableSelected: 'selected',
   },
+
   nav: {
     active: 'active',
   },
+
   pages: {
     active: 'active',
   }
@@ -90,35 +120,42 @@ export const classNames = {
 export const settings = {
   amountWidget: {
     defaultValue: 1,
-    defaultMin: 1,
-    defaultMax: 9,
+    defaultMin: 0,
+    defaultMax: 10,
   },
+
   cart: {
     defaultDeliveryFee: 20,
   },
-  hours: {
-    open: 12,
-    close: 24,
-  },
-  datePicker: {
-    maxDaysInFuture: 14,
-  },
-  booking: {
-    tableIdAttribute: 'data-table',
-  },
+
   db: {
-    url: '//localhost:3131',
+    url:  '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
     products: 'products',
     orders: 'orders',
-    booking: 'booking',
-    event: 'event',
+    product: 'product',
+    order: 'order',
+    bookings: 'bookings',
+    events: 'events',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',
     repeatParam: 'repeat_ne=false',
+
+  },
+
+  hours: {
+    open: 12,
+    close: 24,
+  },
+
+  datePicker: {
+    maxDaysInFuture: 14,
+  },
+
+  booking: {
+    tableIdAttribute: 'data-table',
   },
 };
-
 export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),

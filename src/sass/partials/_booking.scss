@@ -156,6 +156,10 @@
       }
 
     }
+    &.selected{
+      background-color: rgb(142, 235, 142);
+    }
+
 
     &.booked {
       cursor: not-allowed;
@@ -173,6 +177,7 @@
       }
 
     }
+
   }
 
   [data-table="1"] {
