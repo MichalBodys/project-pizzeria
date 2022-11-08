@@ -157,6 +157,7 @@ class Booking {
     const Booked = clickedElement.classList.contains(classNames.booking.tableBooked);
     const Selected = clickedElement.classList.contains(classNames.booking.tableSelected);
 
+    
     if(tableId){
       if(Booked) {
         alert('stolik niedostępny');
